@@ -15,16 +15,40 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Omar\Desktop\New folder\DreamParadise
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Home/Booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCb29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Home/ContactUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0VXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Home/_LoginForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfTG9naW5Gb3JtLmNzaHRtbA==
+[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Home/Reservations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNlcnZhdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Home/_RegistrationForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfUmVnaXN0cmF0aW9uRm9ybS5jc2h0bWw=
+[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Home/Rooms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSb29tcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/LogReg/LogReg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nUmVnXExvZ1JlZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/LogReg/_LoginForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nUmVnXF9Mb2dpbkZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Omar/Desktop/New folder/DreamParadise/Views/LogReg/_RegistrationForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nUmVnXF9SZWdpc3RyYXRpb25Gb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Omar/Desktop/New folder/DreamParadise/Views/Shared/Error.cshtml]

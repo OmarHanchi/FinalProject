@@ -1,17 +1,20 @@
 #pragma warning disable CS8618
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography;
 namespace DreamParadise.Models;
 public class Reservation
 {
 
+
+    [Key]        
+    public int ReservationId { get; set; }
 
     //* =========== CheckIn Date validation ===============
     [Required(ErrorMessage ="please enter the CheckIn date")]
     [FutureDate]
     public DateTime CheckIn { get; set; }
     
-
     //* =========== CheckOut Date validation ===============
 
     [Required(ErrorMessage ="please enter the CheckOut date")]
@@ -20,13 +23,18 @@ public class Reservation
 
     //* =========== chosen room validation ===============
     [Required]
-    public string Room {get;set;}
+    public int Room {get;set;}
 
-    //* ===========  Price validation ===============
+    //* ===========  Child validation ===============
     [Required]
-    public int  Price {get;set;}
+    public int ChildCount { get; set; }
 
 
+    //* ===========  Child validation ===============
+    [Required]
+    public int Price {get;set;}
+
+    
 
     //* ===========   Navigation ===============
     public User? UserWhoReserved {get;set;}

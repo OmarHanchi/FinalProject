@@ -42,8 +42,9 @@ public class User
 
     //* ======= Navigation ============
 
-    //.....................
-    //.....................
+        public List<Reservation> UserReservations { get; set; } = new List<Reservation>();
+        public List<Rating> UserRatings { get; set; } = new List<Rating>();
+
 
 
 

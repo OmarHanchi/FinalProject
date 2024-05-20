@@ -3,16 +3,20 @@ using System.ComponentModel.DataAnnotations;
 // Add this using statement to access NotMapped
 using System.ComponentModel.DataAnnotations.Schema;
 namespace DreamParadise.Models;
-public class RatingService
+public class Rating
 {
+    [Key]        
+    public int RatingId { get; set; }
 
     //* ===========  rating validation ===============
-        [Required]    
-        public int Rating { get; set; }  
+    
+    [Required ]
+    [Range(1,5)]    
+    public int RatingService { get; set; }     
 
 
     //* ===========  Navigation property ===============
-    public User? UserWhoRate {get;set;}
+    public User? UserWhoRated {get;set;}
 
 
 

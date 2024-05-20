@@ -21,83 +21,56 @@ namespace DreamParadise.Controllers;
 
 
 
-    //*================ Login and registration  view  action =============
+    //*================ Home  view  action =============
         public IActionResult Index()
         {
             return View();
         }
 
 
+    //*================ About  view  action =============
 
+
+          public IActionResult About()
+        {
+            return View();
+        }
+
+    //*================ Rooms  view  action =============
+
+          public IActionResult Rooms()
+        {
+            return View();
+        }
+
+    //*================ Book now   view  action =============
+        [SessionCheck]
+         public IActionResult Booking()
+        {
+            return View();
+        }
+
+
+    //*================ Contact Us  view  action =============
+
+         public IActionResult ContactUs()
+        {
+            return View();
+        }
+
+
+
+    //*================ Reservations  view  action =============
+        [SessionCheck]
+         public IActionResult Reservations()
+        {
+            return View();
+        }
         
-    //*================ Registration with password hashing =============
-        [HttpPost("users/create")]
-        public IActionResult Register(User newUser)
-        {
-        if (ModelState.IsValid)
-        {
-            // Password hashing
-            PasswordHasher<User> hasher = new PasswordHasher<User>();
-            newUser.Password = hasher.HashPassword(newUser, newUser.Password);
-
-            _context.Add(newUser);
-            _context.SaveChanges();
-            HttpContext.Session.SetInt32("UserId", newUser.UserId);
-            // Redirect to weddings view after successful registration
-            return RedirectToAction("Projects");
-        }
-        else
-        {
-            return View("Index");
-        }
-        }
-
-
-
-
-    //*================ Login Action  =============
         
-        [HttpPost("users/login")]
-        public IActionResult Login(LoginUser userSubmission)
-        {
-            if (ModelState.IsValid)
-            {
-                User? userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.LoginEmail);
 
-                if (userInDb == null)
-                {
-                    ModelState.AddModelError("LoginEmail", "Invalid Email/Password");
-                    return View("Index");
-                }
 
-                PasswordHasher<LoginUser> hasher = new PasswordHasher<LoginUser>();
-                var result = hasher.VerifyHashedPassword(userSubmission, userInDb.Password, userSubmission.LoginPassword);
-
-                if (result == PasswordVerificationResult.Success)
-                {
-                    HttpContext.Session.SetInt32("UserId", userInDb.UserId); // Set session with user ID
-                    return RedirectToAction("Projects");
-                }
-                else
-                {
-                    ModelState.AddModelError("Password", "Invalid Email/Password");
-                    return View("Index");
-                }
-            }
-            else
-            {
-                return View("Index");
-            }
-        }
-    
-    //*================ Logout Action =============
-        [HttpPost("logout")]
-        public IActionResult Logout()
-        {
-            HttpContext.Session.Clear();
-            return RedirectToAction("Index");
-        }
-
+       
 
 
 
@@ -128,7 +101,7 @@ namespace DreamParadise.Controllers;
             int? userId = context.HttpContext.Session.GetInt32("UserId");
             if (userId == null)
             {
-                context.Result = new RedirectToActionResult("Index", "Home", null);
+                context.Result = new RedirectToActionResult("LogReg", "LogReg", null);
             }
         }
     }

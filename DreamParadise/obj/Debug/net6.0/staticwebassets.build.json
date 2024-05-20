@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DGsEnw/KZjqoN7N/m+Ihh3ZU7DoV9Zf9ozzA2hBZqNc=",
+  "Hash": "S1QAlW4GzPcejHYfHfZwG2M9wPApM3fbNLATgPBbUuI=",
   "Source": "DreamParadise",
   "BasePath": "_content/DreamParadise",
   "Mode": "Default",
@@ -49,23 +49,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Omar\\Desktop\\New folder\\DreamParadise\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\DreamParadise.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\Users\\Omar\\Desktop\\New folder\\DreamParadise\\wwwroot\\css\\bootstrap.min.css",
-      "SourceId": "DreamParadise",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Omar\\Desktop\\New folder\\DreamParadise\\wwwroot\\",
-      "BasePath": "_content/DreamParadise",
-      "RelativePath": "css/bootstrap.min.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css"
     },
     {
       "Identity": "C:\\Users\\Omar\\Desktop\\New folder\\DreamParadise\\wwwroot\\css\\lightbox.min.css",
@@ -1256,6 +1239,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Omar\\Desktop\\New folder\\DreamParadise\\wwwroot\\scss\\Rooms.scss",
+      "SourceId": "DreamParadise",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Omar\\Desktop\\New folder\\DreamParadise\\wwwroot\\",
+      "BasePath": "_content/DreamParadise",
+      "RelativePath": "scss/Rooms.scss",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\scss\\Rooms.scss"
     }
   ]
 }

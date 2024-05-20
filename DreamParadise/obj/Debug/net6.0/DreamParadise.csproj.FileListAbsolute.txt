@@ -33,3 +33,5 @@ C:\Users\Omar\Desktop\New folder\DreamParadise\obj\Debug\net6.0\refint\DreamPara
 C:\Users\Omar\Desktop\New folder\DreamParadise\obj\Debug\net6.0\DreamParadise.pdb
 C:\Users\Omar\Desktop\New folder\DreamParadise\obj\Debug\net6.0\DreamParadise.genruntimeconfig.cache
 C:\Users\Omar\Desktop\New folder\DreamParadise\obj\Debug\net6.0\ref\DreamParadise.dll
+C:\Users\Omar\Desktop\New folder\DreamParadise\bin\Debug\net6.0\package-lock.json
+C:\Users\Omar\Desktop\New folder\DreamParadise\bin\Debug\net6.0\package.json

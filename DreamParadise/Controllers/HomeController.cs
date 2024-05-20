@@ -22,7 +22,6 @@ namespace DreamParadise.Controllers;
 
 
     //*================ Login and registration  view  action =============
-
         public IActionResult Index()
         {
             return View();
@@ -57,6 +56,7 @@ namespace DreamParadise.Controllers;
 
 
     //*================ Login Action  =============
+        
         [HttpPost("users/login")]
         public IActionResult Login(LoginUser userSubmission)
         {

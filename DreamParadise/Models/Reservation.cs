@@ -21,9 +21,7 @@ public class Reservation
     [FutureDate]
     public DateTime CheckOut { get; set; }  
 
-    //* =========== chosen room validation ===============
-    [Required]
-    public int Room {get;set;}
+    
 
     //* ===========  Child validation ===============
     [Required]
@@ -38,6 +36,8 @@ public class Reservation
 
     //* ===========   Navigation ===============
     public User? UserWhoReserved {get;set;}
+    public List<Room> ReservedRooms { get; set; } = new List<Room>();
+    
 
 
 

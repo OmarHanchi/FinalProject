@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DreamParadise.Migrations
 {
-    public partial class SecondMigration : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,7 +64,6 @@ namespace DreamParadise.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CheckIn = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CheckOut = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Room = table.Column<int>(type: "int", nullable: false),
                     ChildCount = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     UserWhoReservedUserId = table.Column<int>(type: "int", nullable: true)
@@ -80,6 +79,31 @@ namespace DreamParadise.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    RoomId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserWhoReservedUserId = table.Column<int>(type: "int", nullable: true),
+                    ReservationId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.RoomId);
+                    table.ForeignKey(
+                        name: "FK_Rooms_Reservations_ReservationId",
+                        column: x => x.ReservationId,
+                        principalTable: "Reservations",
+                        principalColumn: "ReservationId");
+                    table.ForeignKey(
+                        name: "FK_Rooms_Users_UserWhoReservedUserId",
+                        column: x => x.UserWhoReservedUserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_UserWhoRatedUserId",
                 table: "Ratings",
@@ -89,12 +113,25 @@ namespace DreamParadise.Migrations
                 name: "IX_Reservations_UserWhoReservedUserId",
                 table: "Reservations",
                 column: "UserWhoReservedUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_ReservationId",
+                table: "Rooms",
+                column: "ReservationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_UserWhoReservedUserId",
+                table: "Rooms",
+                column: "UserWhoReservedUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Ratings");
+
+            migrationBuilder.DropTable(
+                name: "Rooms");
 
             migrationBuilder.DropTable(
                 name: "Reservations");

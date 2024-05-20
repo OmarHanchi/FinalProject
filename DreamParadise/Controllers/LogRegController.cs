@@ -26,7 +26,7 @@ namespace DreamParadise.Controllers;
         {
             return View();
         }
-
+      
 
 
         
@@ -44,7 +44,7 @@ namespace DreamParadise.Controllers;
             _context.SaveChanges();
             HttpContext.Session.SetInt32("UserId", newUser.UserId);
             // Redirect to weddings view after successful registration
-            return RedirectToAction("Projects");
+            return RedirectToAction("Index", "Home");
         }
         else
         {
@@ -76,7 +76,7 @@ namespace DreamParadise.Controllers;
                 if (result == PasswordVerificationResult.Success)
                 {
                     HttpContext.Session.SetInt32("UserId", userInDb.UserId); // Set session with user ID
-                    return RedirectToAction("Projects");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

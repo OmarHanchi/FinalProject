@@ -1,119 +1,51 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+@model Reservation
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-image: url('/images/background.jpg'); /* Chemin relatif à partir de la racine du site */
-            background-size: cover; /* Pour couvrir toute la page */
-            background-position: bottom; /* Centrer l'image */
-            background-repeat: no-repeat; /* Ne pas répéter l'image */
-            height: 100vh; /* Assurer que le body prend toute la hauteur de la vue */
-        }
-
-        h1 {
-            text-align: center; /* Center the text */
-            margin-top: 50px; /* Top margin for spacing */
-            color: #fbf4f4; /* Text color */
-            font-size: 36px; /* Font size */
-        }
-
-        /* Style du formulaire */
-        form {
-            background-color: rgba(255, 255, 255, 0.7); /* Fond du formulaire semi-transparent */
-            max-width: 400px; /* Largeur maximale du formulaire */
-            margin: 20px auto; /* Centrage horizontal du formulaire */
-            padding: 20px; /* Espacement intérieur du formulaire */
-            border-radius: 10px; /* Coins arrondis */
-        }
-
-        input[type="text"],
-        input[type="date"],
-        select {
-            width: 100%; /* Largeur du champ de saisie */
-            padding: 10px; /* Espacement intérieur */
-            margin-bottom: 10px; /* Espacement inférieur */
-            border-radius: 5px; /* Coins arrondis */
-            border: 1px solid #ccc; /* Bordure grise */
-            box-sizing: border-box; /* Inclure le remplissage et la bordure dans la largeur */
-        }
-
-        input[type="submit"] {
-            width: 100%; /* Largeur du bouton */
-            padding: 10px; /* Espacement intérieur */
-            border: none; /* Pas de bordure */
-            background-color: #007bff; /* Couleur de fond bleue */
-            color: white; /* Couleur du texte blanc */
-            border-radius: 5px; /* Coins arrondis */
-            cursor: pointer; /* Curseur de pointeur */
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3; /* Couleur de fond bleue foncée au survol */
-        }
-    </style>
 </head>
-<body>
-    <div style="margin-top: 20px;"> <!-- Ajout d'un espace entre les deux div -->
-        <h1>Book now</h1>
-        <form action="#" method="post" id="reservationForm">
-            <label for="checkin">Date de début de la réservation :</label>
-            <input type="date" id="checkin" name="checkin">
+<body class="bg-light">
+    <div class="container vh-50 d-flex flex-column justify-content-center">
+        <h1 class="text-center text-Black mb-4">Book now</h1>
+        <div class="bg-white p-4 rounded shadow">
+            <form asp-action="CreateReservation" method="post" asp-controller="Home" id="reservationForm">
+                <div class="form-group">
+                    <label for="CheckIn">Date de début de la réservation :</label>
+                    <input asp-for="CheckIn" id="checkingIn" class="form-control">
+                    <span asp-validation-for="CheckIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="CheckOut">Date de sortie de l'hôtel :</label>
+                    <input asp-for="CheckOut" id="checkingout" class="form-control">
+                    <span asp-validation-for="CheckOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Rooms :</label>
+                    <select id="guests" name="guests" class="form-control" onchange="toggleChildrenFields()">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="single">Single Room</option> 
+                        <option value="couple">Family Room</option>
+                        <option value="couple with children">Suite</option> 
+                    </select>
 
-            <label for="checkout">Date de sortie de l'hôtel :</label>
-            <input type="date" id="checkout" name="checkout">
-
-            <label for="guests">Rooms :</label>
-            <select id="guests" name="guests" onchange="toggleChildrenFields()">
-                <option value="single">Single Room</option> // For one person
-                <option value="couple">Familly Room</option> // For a couple + 1 childre
-                <option value="couple_with_children">Suite</option> // For couple + 2 childrens or more
-            </select>
-            <input type="submit" value="Réserver">
-        </form>
+                    <span asp-validation-for="CheckOut" class="text-danger"></span>
+                </div>
+                <div id="childrenFields" class="form-group" style="display: none;">
+                    <label for="childCount">Number of children:</label>
+                    <input asp-for="ChildCount" class="form-control" >
+                </div>
+                <div id="childrenFields" class="form-group" style="display: none;">
+                    <label for="childCount">Total price :</label>
+                    <input asp-for="ChildCount" class="form-control" >
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Book</button>
+            </form>
+        </div>
     </div>
-
-    <script>
-        function toggleChildrenFields() {
-            var guestsSelect = document.getElementById("guests");
-            var childrenFields = document.getElementById("childrenFields");
-
-            if (guestsSelect.value === "couple_with_children") {
-                childrenFields.style.display = "block";
-                addChildrenAgeFields();
-            } else {
-                childrenFields.style.display = "none";
-            }
-        }
-
-        function addChildrenAgeFields() {
-            var childCount = document.getElementById("childCount").value;
-            var childrenAgesDiv = document.getElementById("childrenAges");
-            childrenAgesDiv.innerHTML = ""; // Réinitialiser les champs d'âge des enfants
-
-            for (var i = 1; i <= childCount; i++) {
-                var label = document.createElement("label");
-                label.textContent = "Âge de l'enfant " + i + " :";
-                childrenAgesDiv.appendChild(label);
-
-                var input = document.createElement("input");
-                input.type = "number";
-                input.name = "childAge" + i;
-                input.min = "0";
-                childrenAgesDiv.appendChild(input);
-
-                childrenAgesDiv.appendChild(document.createElement("br"));
-            }
-        }
-    </script>
-    
 </body>
 </html>

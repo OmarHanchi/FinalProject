@@ -66,6 +66,21 @@ namespace DreamParadise.Controllers;
         {
             return View();
         }
+
+         [HttpPost("Reservations/new")]
+        public IActionResult CreateReservation (Reservation newReservation)
+        {    
+            if(ModelState.IsValid)
+            {
+                _context.Add(newReservation);    
+                _context.SaveChanges();
+                return RedirectToAction("Reservations");
+            } 
+            else 
+            {
+                return View ("Booking");    
+            }
+        }
         
         
 

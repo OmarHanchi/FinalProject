@@ -32,7 +32,15 @@ public class Reservation
     [Required]
     public int Price {get;set;}
 
-    
+
+
+
+    //* ======= Created & Updated validation ============
+    public DateTime CreatedAt {get;set;} = DateTime.Now;        
+    public DateTime UpdatedAt {get;set;} = DateTime.Now;
+
+
+
 
     //* ===========   Navigation ===============
     public User? UserWhoReserved {get;set;}

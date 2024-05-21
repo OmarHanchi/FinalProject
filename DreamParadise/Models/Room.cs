@@ -11,8 +11,16 @@ public class Room
 
 
 
+
+
     //* ======= Navigation ============
     public User? UserWhoReserved {get;set;}
+
+
+
+
+
+    
 }
 
 

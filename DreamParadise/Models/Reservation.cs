@@ -1,83 +1,72 @@
 #pragma warning disable CS8618
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Cryptography;
-namespace DreamParadise.Models;
-public class Reservation
+
+namespace DreamParadise.Models
 {
-
-
-    [Key]        
-    public int ReservationId { get; set; }
-
-    //* =========== CheckIn Date validation ===============
-    [Required(ErrorMessage ="please enter the CheckIn date")]
-    [FutureDate]
-    public DateTime CheckIn { get; set; }
-    
-    //* =========== CheckOut Date validation ===============
-
-    [Required(ErrorMessage ="please enter the CheckOut date")]
-    [FutureDate]
-    public DateTime CheckOut { get; set; }  
-
-    
-
-    //* ===========  Child validation ===============
-    [Required]
-    public int ChildCount { get; set; }
-
-
-    //* ===========  Child validation ===============
-    [Required]
-    public int Price {get;set;}
-
-
-
-
-    //* ======= Created & Updated validation ============
-    public DateTime CreatedAt {get;set;} = DateTime.Now;        
-    public DateTime UpdatedAt {get;set;} = DateTime.Now;
-
-
-
-
-    //* ===========   Navigation ===============
-    public User? UserWhoReserved {get;set;}
-    public List<Room> ReservedRooms { get; set; } = new List<Room>();
-    
-
-
-
-
-}
-
-
-    //! =========== Future date attribute creation   ===============
-
-public class FutureDateAttribute : ValidationAttribute
-{
-    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+    public class Reservation
     {
-        if (value ==null )
+        [Key]
+        public int ReservationId { get; set; }
+
+        // =========== CheckIn Date validation ===============
+        [Required(ErrorMessage = "Please enter the CheckIn date")]
+        [FutureDate]
+        public DateTime CheckIn { get; set; }
+        
+        // =========== CheckOut Date validation ===============
+        [Required(ErrorMessage = "Please enter the CheckOut date")]
+        [FutureDate]
+        public DateTime CheckOut { get; set; }
+
+        // =========== Adults count validation ===============
+        [Required]
+        [Range(1, 5, ErrorMessage = "Please enter a number between 1 and 5")]
+        public int AdultsCount { get; set; }
+
+        // =========== Child count validation ===============
+        [Required]
+        public int ChildCount { get; set; }
+
+        // =========== Room type and price ===============
+        [Required]
+        public string RoomType { get; set; }
+
+        [Required]
+        public int RoomPrice { get; set; }
+
+        // =========== Total Price validation ===============
+        [Required]
+        public int TotalPrice { get; set; }
+
+        // ======= Created & Updated validation ============
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+        // =========== Navigation ===============
+        public User? UserWhoReserved { get; set; }
+    }
+
+    // =========== Future date attribute creation ===============
+    public class FutureDateAttribute : ValidationAttribute
+    {
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
+            if (value == null)
+            {
+                return ValidationResult.Success;
+            }
+            DateTime submittedDate = (DateTime)value;
+            if (submittedDate < DateTime.Now)
+            {
+                return new ValidationResult("Please enter a date in the future!");
+            }
             return ValidationResult.Success;
         }
-        DateTime SubmittedDate = (DateTime) value;
-        if (SubmittedDate < DateTime.Now)
-        {
-            return new ValidationResult ("Please enter a date in the future ! ");
-
-        }
-        return ValidationResult.Success;
     }
-  
-}
 
-
-
-    //! =========== Checkout  date range  attribute creation   ===============
-     public class DateRangeAttribute : ValidationAttribute
+    // =========== Checkout date range attribute creation ===============
+    public class DateRangeAttribute : ValidationAttribute
     {
         private readonly string _startDatePropertyName;
 
@@ -106,3 +95,4 @@ public class FutureDateAttribute : ValidationAttribute
             return ValidationResult.Success;
         }
     }
+}

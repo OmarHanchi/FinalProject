@@ -31,6 +31,10 @@ namespace DreamParadise.Migrations
                     b.Property<int>("RatingService")
                         .HasColumnType("int");
 
+                    b.Property<string>("Suggestion")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -50,6 +54,9 @@ namespace DreamParadise.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("AdultsCount")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CheckIn")
                         .HasColumnType("datetime(6)");
 
@@ -62,7 +69,14 @@ namespace DreamParadise.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Price")
+                    b.Property<int>("RoomPrice")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoomType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("TotalPrice")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -76,27 +90,6 @@ namespace DreamParadise.Migrations
                     b.HasIndex("UserWhoReservedUserId");
 
                     b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("DreamParadise.Models.Room", b =>
-                {
-                    b.Property<int>("RoomId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserWhoReservedUserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("RoomId");
-
-                    b.HasIndex("ReservationId");
-
-                    b.HasIndex("UserWhoReservedUserId");
-
-                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("DreamParadise.Models.User", b =>
@@ -148,24 +141,6 @@ namespace DreamParadise.Migrations
                         .HasForeignKey("UserWhoReservedUserId");
 
                     b.Navigation("UserWhoReserved");
-                });
-
-            modelBuilder.Entity("DreamParadise.Models.Room", b =>
-                {
-                    b.HasOne("DreamParadise.Models.Reservation", null)
-                        .WithMany("ReservedRooms")
-                        .HasForeignKey("ReservationId");
-
-                    b.HasOne("DreamParadise.Models.User", "UserWhoReserved")
-                        .WithMany()
-                        .HasForeignKey("UserWhoReservedUserId");
-
-                    b.Navigation("UserWhoReserved");
-                });
-
-            modelBuilder.Entity("DreamParadise.Models.Reservation", b =>
-                {
-                    b.Navigation("ReservedRooms");
                 });
 
             modelBuilder.Entity("DreamParadise.Models.User", b =>

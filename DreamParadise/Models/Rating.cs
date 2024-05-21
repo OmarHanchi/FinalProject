@@ -14,6 +14,13 @@ public class Rating
     [Range(1,5)]    
     public int RatingService { get; set; }     
 
+    //* ===========  suggestion validation ===============
+     
+    public string Suggestion { get; set; }  
+
+
+
+
     //* ======= Created & Updated validation ============
     public DateTime CreatedAt {get;set;} = DateTime.Now;        
     public DateTime UpdatedAt {get;set;} = DateTime.Now;

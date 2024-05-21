@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using DreamParadise.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
-namespace DreamParadise.Controllers;
-
- public class HomeController : Controller
+namespace DreamParadise.Controllers
+{
+    public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private MyContext _context;
@@ -18,105 +19,107 @@ namespace DreamParadise.Controllers;
             _context = context;
         }
 
-
-
-
-    //*================ Home  view  action =============
+        //*================ Home  view  action =============
         public IActionResult Index()
         {
             return View();
         }
 
-
-    //*================ About  view  action =============
-
-
-          public IActionResult About()
+        //*================ About  view  action =============
+        public IActionResult About()
         {
             return View();
         }
 
-    //*================ Rooms  view  action =============
-
-          public IActionResult Rooms()
+        //*================ Rooms  view  action =============
+        public IActionResult Rooms()
         {
             return View();
         }
 
-    //*================ Book now   view  action =============
+        //*================ Book now view  action =============
         [SessionCheck]
-         public IActionResult Booking()
+        public IActionResult Booking()
         {
             return View();
         }
 
-
-    //*================ Contact Us  view  action =============
-
-         public IActionResult ContactUs()
+        //*================ Contact Us view  action =============
+        public IActionResult ContactUs()
         {
             return View();
         }
 
-
-
-    //*================ Reservations  view  action =============
+        //*================ Reservations view  action =============
         [SessionCheck]
-         public IActionResult Reservations()
+        public IActionResult Reservations()
         {
-            return View();
+            var reservations = _context.Reservations.ToList();
+            return View(reservations);
         }
 
-         [HttpPost("Reservations/new")]
-        public IActionResult CreateReservation (Reservation newReservation)
-        {    
-            if(ModelState.IsValid)
+        [HttpPost("Reservations/new")]
+        public IActionResult CreateReservation(Reservation newReservation)
+        {
+            if (ModelState.IsValid)
             {
-                _context.Add(newReservation);    
+                // Determine the room price based on room type
+                switch (newReservation.RoomType)
+                {
+                    case "Single Room":
+                        newReservation.RoomPrice = 100;
+                        if (newReservation.AdultsCount + newReservation.ChildCount > 2)
+                        {
+                            ModelState.AddModelError("", "A Single Room can accommodate only up to 2 people.");
+                            return View("Booking", newReservation);
+                        }
+                        break;
+                    case "Family Room":
+                        newReservation.RoomPrice = 170;
+                        break;
+                    case "Suite":
+                        newReservation.RoomPrice = 210;
+                        break;
+                    default:
+                        ModelState.AddModelError("", "Invalid room type.");
+                        return View("Booking", newReservation);
+                }
+
+                // Calculate the total price
+                int additionalChildFee = newReservation.ChildCount * 50;
+                newReservation.TotalPrice = newReservation.RoomPrice + additionalChildFee;
+
+                _context.Add(newReservation);
                 _context.SaveChanges();
                 return RedirectToAction("Reservations");
-            } 
-            else 
+            }
+            else
             {
-                return View ("Booking");    
+                return View("Booking", newReservation);
             }
         }
-        
-        
 
-
-       
-
-
-
-
-
-
-
-
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
-
-
-
-    //*================ Session check attribute  =============
-    public class SessionCheckAttribute : ActionFilterAttribute
-    {
-        public override void OnActionExecuting(ActionExecutingContext context)
+        public IActionResult Privacy()
         {
-            int? userId = context.HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        //*================ Session check attribute  =============
+        public class SessionCheckAttribute : ActionFilterAttribute
+        {
+            public override void OnActionExecuting(ActionExecutingContext context)
             {
-                context.Result = new RedirectToActionResult("LogReg", "LogReg", null);
+                int? userId = context.HttpContext.Session.GetInt32("UserId");
+                if (userId == null)
+                {
+                    context.Result = new RedirectToActionResult("LogReg", "LogReg", null);
+                }
             }
         }
     }

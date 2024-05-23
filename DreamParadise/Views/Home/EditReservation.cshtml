@@ -1,6 +1,6 @@
 @model DreamParadise.Models.Reservation
 @{
-    ViewData["Title"] = "Book Now";
+    ViewData["Title"] = "Edit Reservation";
 }
 
 <!DOCTYPE html>
@@ -13,21 +13,22 @@
 </head>
 <body class="bg-light">
     <div class="container vh-50 d-flex flex-column justify-content-center">
-        <h1 class="text-center text-dark mb-4">@ViewData["Title"]</h1>
+        <h1 class="text-center text-black mb-4">@ViewData["Title"]</h1>
         <div class="bg-white p-4 rounded shadow">
-            <form method="post" asp-action="CreateReservation">
+            <form method="post" asp-action="UpdateReservation">
+                <input type="hidden" asp-for="ReservationId" />
                 <div class="form-group">
-                    <label class="text-dark" asp-for="CheckIn">Check In:</label>
+                    <label asp-for="CheckIn">Check In:</label>
                     <input id="CheckIn" asp-for="CheckIn" class="form-control" required>
                     <span asp-validation-for="CheckIn" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label class="text-dark" asp-for="CheckOut">Check Out:</label>
+                    <label asp-for="CheckOut">Check Out:</label>
                     <input id="CheckOut" asp-for="CheckOut" class="form-control" required>
                     <span asp-validation-for="CheckOut" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label class="text-dark">Adults:</label>
+                    <label>Adults:</label>
                     <select id="AdultsCount" asp-for="AdultsCount" class="form-control" required onchange="updateRoomOptions()">
                         @for (int i = 1; i <= 5; i++)
                         {
@@ -37,7 +38,7 @@
                     <span asp-validation-for="AdultsCount" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label class="text-dark">Children:</label>
+                    <label>Children:</label>
                     <select id="ChildCount" asp-for="ChildCount" class="form-control" required onchange="updateRoomOptions()">
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -47,7 +48,7 @@
                     <span asp-validation-for="ChildCount" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label class="text-dark" asp-for="RoomType">Room Type:</label>
+                    <label asp-for="RoomType">Room Type:</label>
                     <select id="roomTypeSelect" asp-for="RoomType" class="form-control" required>
                         <option value="Single">Single</option>
                         <option value="Double">Double</option>
@@ -56,11 +57,11 @@
                     <span asp-validation-for="RoomType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label class="text-dark" asp-for="TotalPrice">Total Price:</label>
+                    <label asp-for="TotalPrice">Total Price:</label>
                     <input id="TotalPrice" asp-for="TotalPrice" class="form-control" readonly>
                     <span asp-validation-for="TotalPrice" class="text-danger"></span>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>

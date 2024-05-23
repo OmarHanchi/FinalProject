@@ -50,54 +50,120 @@ namespace DreamParadise.Controllers
             return View();
         }
 
-        //*================ Reservations view  action =============
-        [SessionCheck]
-        public IActionResult Reservations()
-        {
-            var reservations = _context.Reservations.ToList();
-            return View(reservations);
-        }
+[SessionCheck]
+public IActionResult Reservations()
+{
+     // Get the total count of reservations
+    int totalReservationsCount = _context.Reservations.Count();
+    ViewBag.TotalReservationsCount = totalReservationsCount;
 
-        [HttpPost("Reservations/new")]
-        public IActionResult CreateReservation(Reservation newReservation)
-        {
-            if (ModelState.IsValid)
-            {
-                // Determine the room price based on room type
-                switch (newReservation.RoomType)
-                {
-                    case "Single Room":
-                        newReservation.RoomPrice = 100;
-                        if (newReservation.AdultsCount + newReservation.ChildCount > 2)
-                        {
-                            ModelState.AddModelError("", "A Single Room can accommodate only up to 2 people.");
-                            return View("Booking", newReservation);
-                        }
-                        break;
-                    case "Family Room":
-                        newReservation.RoomPrice = 170;
-                        break;
-                    case "Suite":
-                        newReservation.RoomPrice = 210;
-                        break;
-                    default:
-                        ModelState.AddModelError("", "Invalid room type.");
-                        return View("Booking", newReservation);
-                }
+    // Get the user ID from the session
+    int? userId = HttpContext.Session.GetInt32("UserId");
 
-                // Calculate the total price
-                int additionalChildFee = newReservation.ChildCount * 50;
-                newReservation.TotalPrice = newReservation.RoomPrice + additionalChildFee;
+    // Check if user ID is available
+    if (userId != null)
+    {
+        // Retrieve reservations for the logged-in user
+        var userReservations = _context.Reservations
+            .Include(r => r.UserWhoReserved)
+            .Where(r => r.UserWhoReserved.UserId == userId) // Assuming the user ID is stored in the UserId property of Reservation
+            .ToList();
 
-                _context.Add(newReservation);
-                _context.SaveChanges();
-                return RedirectToAction("Reservations");
-            }
-            else
-            {
-                return View("Booking", newReservation);
-            }
-        }
+        return View(userReservations);
+    }
+    else
+    {
+        // Handle case where user ID is not available (session expired or user not logged in)
+        // You may redirect the user to the login page or display an error message
+        return RedirectToAction("LogReg", "LogReg");
+    }
+}
+
+
+
+//*================ Edit Reservation action =============
+[HttpGet]
+[SessionCheck]
+public IActionResult EditReservation(int id)
+{
+    var reservation = _context.Reservations.FirstOrDefault(r => r.ReservationId == id);
+    if (reservation == null)
+    {
+        return NotFound();
+    }
+    return View(reservation);
+}
+
+//*================ Update Reservation action =============
+[HttpPost]
+[SessionCheck]
+public IActionResult UpdateReservation(Reservation updatedReservation)
+{
+    if (ModelState.IsValid)
+    {
+        _context.Reservations.Update(updatedReservation);
+        _context.SaveChanges();
+        return RedirectToAction("Reservations");
+    }
+    return View("EditReservation", updatedReservation);
+}
+
+//*================ Delete Reservation action =============
+[SessionCheck]
+public IActionResult DeleteReservation(int id)
+{
+    var reservation = _context.Reservations.FirstOrDefault(r => r.ReservationId == id);
+    if (reservation != null)
+    {
+        _context.Reservations.Remove(reservation);
+        _context.SaveChanges();
+    }
+    return RedirectToAction("Reservations");
+}
+
+
+
+
+
+
+
+[HttpPost("Reservations/new")]
+public IActionResult CreateReservation(Reservation newReservation)
+{
+    // Retrieve the current user's ID from the session or authentication context
+    int? currentUserId = HttpContext.Session.GetInt32("UserId");
+    
+    if (currentUserId == null)
+    {
+        // Handle the case where the user is not logged in or the session has expired
+        return RedirectToAction("Login", "Account");
+    }
+    
+    if (ModelState.IsValid)
+    {
+        // Set the UserWhoReserved property
+        newReservation.UserWhoReserved = _context.Users.Find(currentUserId);
+
+        // Save the reservation
+        _context.Add(newReservation);
+        _context.SaveChanges();
+
+        return RedirectToAction("Reservations");
+    }
+    else
+    {
+        return View("Booking", newReservation);
+    }
+}
+
+
+
+
+
+
+
+
+
 
         public IActionResult Privacy()
         {
@@ -124,3 +190,10 @@ namespace DreamParadise.Controllers
         }
     }
 }
+
+
+
+
+
+
+    

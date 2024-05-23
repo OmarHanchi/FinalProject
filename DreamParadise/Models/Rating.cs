@@ -15,7 +15,7 @@ public class Rating
     public int RatingService { get; set; }     
 
     //* ===========  suggestion validation ===============
-     
+     [MinLength(20,ErrorMessage ="Your suggestion should be more than 20 characters ")]
     public string Suggestion { get; set; }  
 
 

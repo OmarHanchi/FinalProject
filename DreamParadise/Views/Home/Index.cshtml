@@ -1,8 +1,209 @@
 ﻿
-<body>
-   <br>
-<br>
-<br>
-<br>
-<h1>this is the home page</h1> 
-</body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- Additional CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/fonts/antonio-exotic/stylesheet.css" rel="stylesheet">
+    <link href="~/css/lightbox.min.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lightbox and other JS scripts -->
+    <script src="~/js/lightbox-plus-jquery.min.js"></script>
+    <script src="~/js/instafeed.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    <link rel="stylesheet" href="~/css/Index.css">
+
+
+
+<!-- Carrousel -->
+  <div id="myCarousel1" class="carousel slide" data-bs-ride="carousel">
+    <div class="container">
+      <ol class="carousel-indicators">
+        <li data-bs-target="#myCarousel1" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#myCarousel1" data-bs-slide-to="1"></li>
+        <li data-bs-target="#myCarousel1" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/banner.png" class="d-block w-100" alt="First slide">
+          <div class="carousel-caption d-flex justify-content-center align-items-center">
+            <h1>DreamParadise<br>spa & Resort</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/banner2.png" class="d-block w-100" alt="Second slide">
+          <div class="carousel-caption d-flex justify-content-center align-items-center">
+            <h1>DreamParadise<br>spa & Resort</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/banner3.png" class="d-block w-100" alt="Third slide">
+          <div class="carousel-caption d-flex justify-content-center align-items-center">
+            <h1>DreamParadise<br>spa & Resort</h1>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel1" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+
+<!-- Services -->
+<section class="service-block">
+  <div class="container">
+    <div class="row service-details-wrapper">
+      <div class="col-md-3 col-sm-3 col-xs-6 width-50">
+        <div class="service-details text-center">
+          <div class="service-image">
+            <img alt="Free Wifi" class="img-responsive" src="images/icons/wifi.png">
+          </div>
+          <h4>Free Wifi</h4>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6 width-50">
+        <div class="service-details text-center">
+          <div class="service-image">
+            <img alt="Room Service" class="img-responsive" src="images/icons/key.png">
+          </div>
+          <h4>Room Service</h4>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6 mt-25">
+        <div class="service-details text-center">
+          <div class="service-image">
+            <img alt="Free Parking" class="img-responsive" src="images/icons/car.png">
+          </div>
+          <h4>Free Parking</h4>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6 mt-25">
+        <div class="service-details text-center">
+          <div class="service-image">
+            <img alt="Customer Support" class="img-responsive" src="images/icons/user.png">
+          </div>
+          <h4>Customer Support</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Galerie -->
+<section class="gallery-block gallery-front">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4 gallery-item">
+        <div class="gallery-image">
+            <img class="img-fluid" src="images/room1.png" alt="Deluxe Room">
+            <div class="overlay">
+                <a class="info pop example-image-link img-fluid" href="images/room1.png" data-lightbox="rooms">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+                <p><a href="/Home/Rooms">Single Room</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4 gallery-item">
+        <div class="gallery-image">
+            <img class="img-fluid" src="images/room2.png" alt="Super Room">
+            <div class="overlay">
+                <a class="info pop example-image-link img-fluid" href="images/room2.png" data-lightbox="rooms">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+                <p><a href="/Home/Rooms">Family Room</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4 gallery-item">
+        <div class="gallery-image">
+            <img class="img-fluid" src="images/room3.png" alt="Single Room">
+            <div class="overlay">
+                <a class="info pop example-image-link img-fluid" href="images/room3.png" data-lightbox="rooms">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+                <p><a href="/Home/Rooms">Royal Suite</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+
+<!-- Aperçu du complexe -->
+<section class="resort-overview-block text-center">
+     <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="service-item">
+          <div class="service-image">
+            <a href="#"><img src="images/category1.png" alt="image"></a>
+          </div>
+          <div class="service-content">
+            <h3><a href="#">Luxury Spa</a></h3>
+            <p>Immerse yourself in tranquility at <strong style="color: black;">Dream</strong> <strong style="color: red;">Paradise</strong> Spa.  Escape the everyday and step into a world of pure indulgence. Our luxurious spa boasts a serene atmosphere, state-of-the-art facilities, and a team of highly trained therapists dedicated to your complete rejuvenation. </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="service-item">
+          <div class="service-content">
+            <h3><a href="/Home/Rooms">Luxury Room</a></h3>
+            <p>LIndulge in unparalleled comfort at <strong style="color: black;">Dream</strong> <strong style="color: red;">Paradise</strong>. Our luxury rooms offer a haven of tranquility, featuring plush furnishings, spacious layouts, and stunning views. Unwind after a day of exploration and awaken to the beauty of your surroundings.</p>
+          </div>
+          <div class="service-image">
+            <a href="/Home/Rooms"><img src="images/category3.png" alt="image"></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="service-item">
+          <div class="service-image">
+            <a href="#"><img src="images/category2.png" alt="image"></a>
+          </div>
+          <div class="service-content">
+            <h3><a href="#">Beatusish ingl</a></h3>
+            <p>
+As the name suggests, <strong style="color: black;">Dream</strong> <strong style="color: red;">Paradise</strong>'s Beatusish Ingles are idyllic escapes. Imagine private balconies overlooking breathtaking landscapes, exquisitely appointed interiors designed for relaxation, and luxurious amenities catering to your every whim. Immerse yourself in the beauty and tranquility of your Beatusish Ingle retreat.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="service-item">
+          <div class="service-content">
+            <h3><a href="#">Heaven Seanery</a></h3>
+            <p>
+Embrace breathtaking panoramas at <strong style="color: black;">Dream</strong> <strong style="color: red;">Paradise</strong>. Our Heaven Seanery rooms offer unparalleled vistas, showcasing the region's natural splendor. Wake up to inspiring sunrises and gaze at star-studded night skies, all from the comfort of your luxurious haven.</p>
+          </div>
+          <div class="service-image">
+            <a href="#"><img src="images/category4.png" alt="image"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-OgqSokzRpl+pOB1+5zXVXhwpkRnQoEGf6dIWUVIcJEaQ9Gt kPaXGOPqdKOnEx+fyt+" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-OgqSokzRpl+pOB1+5zXVXhwpkRnQoEGf6dIWUVIcJEaQ9Gt kPaXGOPqdKOnEx+fyt+" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-tX1k+sPxOKuNwbqIWYOG+zAjlkXk73CPWhnCdUuIyuUVCWNqUaMcA9M0PJudFiK1vHWKgBKYqVrD5OlwguvYcw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-tX1k+sPxOKuNwbqIWYOG+zAjlkXk73CPWhnCdUuIyuUVCWNqUaMcA9M0PJudFiK1vHWKgBKYqVrD5OlwguvYcw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

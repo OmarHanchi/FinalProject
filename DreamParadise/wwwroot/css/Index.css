@@ -1,0 +1,172 @@
+.carousel {
+    position: relative;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner .item {
+    position: relative;
+    display: none;
+    -webkit-transition: 0.6s ease-in-out left;
+    -o-transition: 0.6s ease-in-out left;
+    transition: 0.6s ease-in-out left;
+}
+
+.carousel-inner .item.active {
+    position: relative;
+    display: block;
+}
+
+.carousel-inner .item img {
+    line-height: 1;
+}
+
+.carousel-inner .item>img {
+    display: block;
+    max-width: 100%;
+    height: 500px;
+    margin: auto;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.carousel-caption h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 15%;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0);
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+
+.carousel-control:hover {
+    color: #fff;
+    text-decoration: none;
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+}
+
+.carousel-control.left {
+    left: 0;
+}
+
+.carousel-control.right {
+    right: 0;
+}
+
+.carousel-control img {
+    width: 50px;
+    height: 50px;
+    margin-top: 220px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 15;
+    width: 60%;
+    padding-left: 0;
+    margin-left: -30%;
+    text-align: center;
+    list-style: none;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    margin: 1px;
+}
+
+.carousel-indicators li.active {
+    margin: 1px;
+}
+
+.carousel-indicators li.active img {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-inner .item {
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    opacity: 0;
+}
+
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.carousel-fade .carousel-control {
+    z-index: 0;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.w681pN text {
+    fill: #000;
+    
+    font-synthesis: style;
+}
+
+element.style {
+    letter-spacing: 0em;
+    direction: ltr;
+    fill: rgb(0, 0, 0);
+    font-size: 113.393px;
+    font-family: madefor-display-extrabold, helveticaneuew01-75bold, helveticaneuew02-75bold, helveticaneuew10-75bold, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    text-anchor: middle;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: visible;
+}
+
+.service-image {
+    border: 2px solid #ff4157;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 35px;
+    background: rgb(255, 255, 255);
+}
+

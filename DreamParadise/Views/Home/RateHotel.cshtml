@@ -1,0 +1,183 @@
+@model List<DreamParadise.Models.Rating>
+@{
+    ViewData["Title"] = "Rate Our Hotel";
+    // Calculate average rating
+    var averageRating = Model != null && Model.Any() ? Model.Select(r => r.RatingService).Average() : 0;
+}
+<link rel="stylesheet" href="~/css/RateHotel.css">
+
+
+
+
+
+<h2 class="text-center mb-4">Rate Our Hotel  </h2>
+<form method="post" asp-action="RateHotel">
+    <div class="rating">
+        <label class="star">
+            <input type="radio" name="RatingService" value="1" />
+            <span class="icon">★</span>
+        </label>
+        <label class="star">
+            <input type="radio" name="RatingService" value="2" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+        </label>
+        <label class="star">
+            <input type="radio" name="RatingService" value="3" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+        </label>
+        <label class="star">
+            <input type="radio" name="RatingService" value="4" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+        </label>
+        <label class="star">
+            <input type="radio" name="RatingService" value="5" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+        </label>
+    </div>
+
+    <div class="mb-3">
+        <label for="suggestion" class="form-label">Suggestion:</label>
+        <textarea id="suggestion" name="Suggestion" required class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="firstName" class="form-label">First Name:</label>
+        <input type="text" id="firstName" name="FirstName" required class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name:</label>
+        <input type="text" id="lastName" name="LastName" required class="form-control" />
+    </div>
+    <button type="submit" class="my-submit-button">Submit</button>
+</form>
+<hr>
+<h2 class="text-center mb-4">Our statistics  </h2>
+  @{
+            var ratingTable = new Dictionary<int, int>
+    {
+        {1,  0},
+        { 2, 0 },
+        { 3, 0 },
+        { 4, 0 },
+        { 5, 0 }
+    };
+            int sumOfRatings = 0;
+            int ratingNb =0; 
+            @foreach (var rating in Model)
+    {
+        @if(rating.RatingService == 1){ratingTable[1]+= 1;}
+          @if(rating.RatingService == 2){ratingTable[2]+= 1;}
+            @if(rating.RatingService == 3){ratingTable[3]+= 1;}
+              @if(rating.RatingService == 4){ratingTable[4]+= 1;}
+                @if(rating.RatingService == 5){ratingTable[5]+= 1;}
+
+        sumOfRatings += rating.RatingService;
+        ratingNb +=1;
+        // ...
+    }
+ double moy = (float) sumOfRatings / (float)ratingNb;
+     
+   
+}
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <p class="card-text h3 mb-0">Average Rating : <span class="h2 mb-0 text-danger">@moy.ToString("0.00") out of 5</span></p>
+
+                </div>
+            </div>
+        </div>
+      
+
+        <div class="col-md-6">
+            <div class="row">
+                @for (int i = 5; i > 0; i--)
+                {  
+                      
+                    double moyn = ((float)ratingTable[i] /(float)ratingNb) * 100;
+                    
+                    <div class="col-md-6">
+                        <div class="stars">@i étoiles</div>
+                        <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: @((int)moyn)%;" aria-valuenow="@((int)moyn)" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                            <div class="percentage">@moyn.ToString("0.00") %</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<h2 class="text-center mb-4">All Ratings and Suggestions</h2>
+
+@if (Model?.Any() ?? false)
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Client</th>
+                    <th style="width: 50%;">Suggestion</th>
+                    <th style="width: 20%;">Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var rating in Model)
+                {
+                    <tr>
+                        <td>@rating.FirstName @rating.LastName</td>
+                        <td>@rating.Suggestion</td>
+                        <td>
+                            @for (int i = 1; i <= rating.RatingService; i++)
+                            {
+                                <span class="icon-bleu">★</span>
+                            }
+                            @for (int j = 1; j <= 5 - rating.RatingService; j++)
+                            {
+                                <span class="star-black">&#9733;</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>No ratings available.</p>
+}
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Add event listener for star rating
+            $('.rating input[type="radio"]').on('change', function () {
+                var rating = $(this).val(); // Note sélectionnée par le client
+                var percentage = (rating / 5) * 100; // Calcul du pourcentage
+
+                // Mise à jour de la barre de progression et du pourcentage correspondant
+                $(this).closest('.rating').find('.progress-bar').css('width', percentage + '%').attr('aria-valuenow', rating);
+                $(this).closest('.rating').find('.percentage').text(percentage + '%');
+            });
+        });
+    </script>
+}

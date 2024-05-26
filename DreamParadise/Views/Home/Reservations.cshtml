@@ -10,11 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
+
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5 mb-6">
         <div class="text-center">
-            <h1>Your total reservations in our hotel is:  @Model.Count()</h1>
+            <h1 id="ViewsTitles" class="reservation-count">Your total reservations in our hotel is: <span>@Model.Count()</span></h1>
         </div>
         <br>
         <table class="table table-bordered table-striped">
@@ -41,12 +43,9 @@
                         <td>@reservation.AdultsCount</td>
                         <td>@reservation.ChildCount</td>
                         <td>@reservation.RoomType</td>
-                        <td>@reservation.TotalPrice dt </td>
+                        <td>@reservation.TotalPrice</td>
                         <td>@reservation.UpdatedAt.ToString("yyyy-MM-dd HH:mm")</td>
-                        
-                        
-                        
-                       <td>
+                        <td>
                             <form asp-action="EditReservation" asp-controller="Home" method="get" class="d-inline">
                                 <input type="hidden" name="id" value="@reservation.ReservationId" />
                                 <button type="submit" class="btn btn-warning btn-sm">Edit</button>
@@ -56,17 +55,14 @@
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form>
                         </td>
-
-
                     </tr>
                 }
             </tbody>
         </table>
 
-        <div class="text-center mt-3">
-            <h4>Dream Paradise Total Reservations Record : @ViewBag.TotalReservationsCount</h4>
+        <div class="text-center mt-6 mb-6">
+            <h4 id="ViewsTitles" class="total-reservations-record">Dream Paradise Total Reservations Record : <span>@ViewBag.TotalReservationsCount</span></h4>
         </div>
-         
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

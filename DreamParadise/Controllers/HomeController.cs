@@ -50,6 +50,8 @@ namespace DreamParadise.Controllers
             return View();
         }
 
+       
+
 [SessionCheck]
 public IActionResult Reservations()
 {
@@ -157,12 +159,38 @@ public IActionResult CreateReservation(Reservation newReservation)
 }
 
 
+        [SessionCheck]
+        public IActionResult RateHotel()
+        {
+            var ratings = _context.Ratings.ToList(); // Retrieve ratings
+        return View(ratings);
+        }
 
+        [HttpPost]
+        public IActionResult RateHotel(RatingViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var rating = new Rating
+                {
+                    RatingService = model.RatingService,
+                    Suggestion = model.Suggestion,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
+                };
 
+                _context.Ratings.Add(rating);
+                _context.SaveChanges();
 
-
-
-
+                return RedirectToAction("RateHotel"); 
+            }
+            return View(model);
+        }
+                [HttpGet]
+                public IActionResult RateUs()
+                {
+                    return View();
+                }
 
 
         public IActionResult Privacy()

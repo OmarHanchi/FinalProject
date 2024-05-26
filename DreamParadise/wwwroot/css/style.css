@@ -1,3 +1,58 @@
+/* Style pour le logo */
+
+#logo a {
+    font-size: 10px;
+    font-weight: bold;
+    color: #333; /* Couleur du texte */
+    text-decoration: none;
+}
+
+#logo a span {
+    color: #ff6600; /* Couleur du texte en surbrillance */
+}
+
+/* Style pour la barre de navigation */
+.navbar {
+    background-color: #fff; /* Couleur de fond de la navbar */
+    border-bottom: 1px solid #ccc; /* Bordure en bas */
+}
+
+.navbar-nav {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav li {
+    display: inline-block;
+    margin-right: 20px; /* Espacement entre les éléments de la navbar */
+}
+
+.navbar-nav li a {
+    color: #333; /* Couleur du texte des liens */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s; /* Transition pour le changement de couleur au survol */
+}
+
+.navbar-nav li a:hover {
+    color: #ff6600; /* Couleur du texte au survol */
+}
+
+/* Style pour les boutons "Book Now" et "Log Now" */
+.book-now-btn {
+    background-color: #ff6600; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte du bouton */
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition pour le changement de couleur au survol */
+}
+
+.book-now-btn:hover {
+    background-color: #e65c00; /* Couleur de fond du bouton au survol */
+}
+
 
 /*@import url('https://fonts.googleapis.com/css?family=Cabin:400,500,600,700');*/
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
@@ -783,9 +838,7 @@ footer a{
     color: #000;
 
 }
-.blog-title-head > a:hover{
 
-}
 .blog-date {
     color: #000;
     font-size: 18px;
@@ -906,3 +959,36 @@ footer a{
 #instafeed > div:nth-last-child(-n+3) {
     margin-top: 15px;
 }
+
+.custom-btn {
+    width: 100%; /* Définit la largeur de chaque bouton à 100% */
+}
+
+
+------------------------------------------------------------
+
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .btn {
+    margin-left: 10px; /* Adjust as needed */
+}
+
+.btn-primary[b-lgg2l2j2gh] {
+    color: #fff;
+    background-color: #ff4157;
+    border-color: #fffefe;
+}
+
+a[b-lgg2l2j2gh] {
+    color: #0c0c0c;
+}
+
+
+
+
+
+

@@ -1,8 +1,8 @@
 @model User
 
 <body>
-    <div class="container mt-5">
-         <fieldset class="border border-dark p-4">
+    <div class="container mt-2">
+         <fieldset class="border border-dark p-5">
             <legend>Register</legend>
             <form asp-action="Register" asp-controller="LogReg" method="post">
                 <div class="mb-3">
@@ -28,7 +28,7 @@
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="PasswordConfirm" class="form-label">Confirm PW</label>
+                    <label asp-for="PasswordConfirm" class="form-label">Confirm Your Password</label>
                     <input asp-for="PasswordConfirm" class="form-control" >
                     <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
                 </div>

@@ -15,8 +15,16 @@ public class Rating
     public int RatingService { get; set; }     
 
     //* ===========  suggestion validation ===============
-     [MinLength(20,ErrorMessage ="Your suggestion should be more than 20 characters ")]
+    [MinLength(20,ErrorMessage ="Your suggestion should be more than 20 characters ")]
     public string Suggestion { get; set; }  
+
+     [Required(ErrorMessage = "First name is required.")]
+    public string? FirstName { get; set; }
+
+    [Required(ErrorMessage = "Last name is required.")]
+    public string? LastName { get; set; }
+
+    
 
 
 
@@ -29,7 +37,9 @@ public class Rating
 
     
     //* ===========  Navigation property ===============
-    public User? UserWhoRated {get;set;}
+    //public User? UserWhoRated {get;set;}
+    public List<User> UserWhoRated { get; set; }
+
 
 
 

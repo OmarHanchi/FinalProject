@@ -8,12 +8,12 @@ public class LoginUser
 
 
     //* ===========  Email validation ===============
-    [Required]    
+    [Required(ErrorMessage ="Please enter your Email")]    
     public string LoginEmail { get; set; }  
 
 
     //* ======= Login Pssword validation ============
-    [Required]
+    [Required (ErrorMessage ="Please enter your password")]
     [DataType(DataType.Password)]
     public string LoginPassword { get; set; } 
 }

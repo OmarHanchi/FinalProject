@@ -13,39 +13,59 @@
 <body>
     
 <div class="pricingTable">
-  <h2 class="pricingTable-title">Find a plan that's right for you.</h2>
+  <h2 class="pricingTable-title">Find a room that's right for you.</h2>
   <ul class="pricingTable-firstTable">
     <li class="pricingTable-firstTable_table">
-      <h1 class="pricingTable-firstTable_table__header">Bronze Package</h1>
-      <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>10</span><span>Month</span></p>
-      <ul class="pricingTable-firstTable_table__options">
-        <li>Unlimited Listing</li>
-        <li>Edit Your Listing</li>
-        <li>Approve Reviews</li>
+      <div class="pricingTable-firstTable_table__wrapper">
+        <h1 class="pricingTable-firstTable_table__header">Single Room</h1>
+      <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>120</span><span>per night</span></p>
+     <div class="mt-4" >
+      <div style="margin-bottom: 60px;">
+           <ul class="pricingTable-firstTable_table__options " >
+        <li>1 Bed</li>
+        
+        <li>Free Wi-Fi</li>
+        
+        <li>Shared Bathroom</li>
+        
+        <li>Max 1 Adult</li>
+        
       </ul>
-        <a asp-action="Booking" asp-controller="Home"> <button class="pricingTable-firstTable_table__getstart" >Get Started Now</button></a>
+      </div>
+      
+        <a asp-action="Booking" asp-controller="Home"> <button class="pricingTable-firstTable_table__getstart" >Book Now</button></a>
+      </div>
     </li>
     <li class="pricingTable-firstTable_table">
-      <h1 class="pricingTable-firstTable_table__header" >Gold Package</h1>
-      <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>19</span><span>Month</span></p>
+      <div class="pricingTable-firstTable_table__wrapper">
+        <h1 class="pricingTable-firstTable_table__header">Double Room</h1>
+      <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>210</span><span>per night</span></p>
       <ul class="pricingTable-firstTable_table__options">
-        <li>Unlimited Listing</li>
-        <li>Edit Your Listing</li>
-        <li>Approve Reviews</li>
-        <li>Take Booking Online</li>
-        <li>24/7 Support Service</li>
+        <li>2 Beds</li>
+        <li>Free Wi-Fi</li>
+        <li>Private Bathroom</li>
+        <li>Television</li>
+        <li>24/7 Room Service</li>
+        <li>Max 2 Adults or 1 adult and 1 Child</li>
       </ul>
-        <a asp-action="Booking" asp-controller="Home"> <button class="pricingTable-firstTable_table__getstart" >Get Started Now</button></a>
+        <a asp-action="Booking" asp-controller="Home"> <button class="pricingTable-firstTable_table__getstart" >Book Now</button></a>
+      </div>
     </li>
     <li class="pricingTable-firstTable_table">
-      <h1 class="pricingTable-firstTable_table__header"  >Platinum Package</h1>
-      <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>49</span><span>Month</span></p>
-      <ul class="pricingTable-firstTable_table__options">
-        <li>Unlimited Listing</li>
-        <li>Edit Your Listing</li>
-        <li>Approve Reviews </li>
+      <div class="pricingTable-firstTable_table__wrapper">
+      <h1 class="pricingTable-firstTable_table__header">Suite Room</h1>
+      <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>250</span><span>per night</span></p>
+      
+        <ul class="pricingTable-firstTable_table__options">
+        <li>King Size Bed</li>
+        <li>Free Wi-Fi</li>
+        <li>Private Bathroom with Jacuzzi</li>
+        <li>Television</li>
+        <li>24/7 Room Service</li>
+        <li>Max 5 Guests</li>
       </ul>
-        <a asp-action="Booking" asp-controller="Home"> <button class="pricingTable-firstTable_table__getstart" >Get Started Now</button></a>
+        <a asp-action="Booking" asp-controller="Home"> <button class="pricingTable-firstTable_table__getstart" >Book Now</button></a>
+      </div>
     </li>
   </ul>
 </div>

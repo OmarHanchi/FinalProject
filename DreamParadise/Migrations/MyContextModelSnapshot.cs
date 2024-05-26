@@ -28,6 +28,14 @@ namespace DreamParadise.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("RatingService")
                         .HasColumnType("int");
 
@@ -38,12 +46,7 @@ namespace DreamParadise.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("UserWhoRatedUserId")
-                        .HasColumnType("int");
-
                     b.HasKey("RatingId");
-
-                    b.HasIndex("UserWhoRatedUserId");
 
                     b.ToTable("Ratings");
                 });
@@ -68,6 +71,9 @@ namespace DreamParadise.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("RoomPrice")
+                        .HasColumnType("int");
 
                     b.Property<string>("RoomType")
                         .IsRequired()
@@ -122,13 +128,19 @@ namespace DreamParadise.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DreamParadise.Models.Rating", b =>
+            modelBuilder.Entity("RatingUser", b =>
                 {
-                    b.HasOne("DreamParadise.Models.User", "UserWhoRated")
-                        .WithMany("UserRatings")
-                        .HasForeignKey("UserWhoRatedUserId");
+                    b.Property<int>("UserRatingsRatingId")
+                        .HasColumnType("int");
 
-                    b.Navigation("UserWhoRated");
+                    b.Property<int>("UserWhoRatedUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserRatingsRatingId", "UserWhoRatedUserId");
+
+                    b.HasIndex("UserWhoRatedUserId");
+
+                    b.ToTable("RatingUser");
                 });
 
             modelBuilder.Entity("DreamParadise.Models.Reservation", b =>
@@ -140,10 +152,23 @@ namespace DreamParadise.Migrations
                     b.Navigation("UserWhoReserved");
                 });
 
+            modelBuilder.Entity("RatingUser", b =>
+                {
+                    b.HasOne("DreamParadise.Models.Rating", null)
+                        .WithMany()
+                        .HasForeignKey("UserRatingsRatingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DreamParadise.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserWhoRatedUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DreamParadise.Models.User", b =>
                 {
-                    b.Navigation("UserRatings");
-
                     b.Navigation("UserReservations");
                 });
 #pragma warning restore 612, 618

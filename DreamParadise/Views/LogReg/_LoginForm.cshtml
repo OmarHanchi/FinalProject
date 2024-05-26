@@ -1,10 +1,11 @@
 @model LoginUser
 
 <body>
-    <div class="container mt-5">
+    <div class="container mt-2">
          <fieldset class="border border-dark p-4">
         <legend>Login</legend>
             <form asp-action="Login" asp-controller="LogReg" method="post">
+            <span class="text-danger">@ViewData["ErrorMessage"]</span>
             <div class="mb-3">
                     <label asp-for="LoginEmail" class="form-label">Email</label>
                     <input asp-for="LoginEmail" class="form-control">

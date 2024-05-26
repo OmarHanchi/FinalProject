@@ -51,25 +51,32 @@ namespace DreamParadise.Controllers
         }
 
        
-
 [SessionCheck]
 public IActionResult Reservations()
 {
-     // Get the total count of reservations
+    // Get the total count of reservations
     int totalReservationsCount = _context.Reservations.Count();
     ViewBag.TotalReservationsCount = totalReservationsCount;
 
     // Get the user ID from the session
     int? userId = HttpContext.Session.GetInt32("UserId");
-
+    // Retrieve the logged-in user's details
+    var loggedInUser = _context.Users.FirstOrDefault(u => u.UserId == userId);
     // Check if user ID is available
     if (userId != null)
     {
-        // Retrieve reservations for the logged-in user
+        // Retrieve reservations for the logged-in user, sorted by UpdatedAt in descending order
         var userReservations = _context.Reservations
             .Include(r => r.UserWhoReserved)
             .Where(r => r.UserWhoReserved.UserId == userId) // Assuming the user ID is stored in the UserId property of Reservation
+            .OrderByDescending(r => r.UpdatedAt) // Sorting by UpdatedAt in descending order
             .ToList();
+        // Pass the logged-in user's details to the view using ViewBag
+        ViewBag.LoggedInUser = loggedInUser;
+
+         
+
+        return View(userReservations);
 
         return View(userReservations);
     }
@@ -80,6 +87,7 @@ public IActionResult Reservations()
         return RedirectToAction("LogReg", "LogReg");
     }
 }
+
 
 
 

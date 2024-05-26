@@ -1,6 +1,8 @@
 @model IEnumerable<DreamParadise.Models.Reservation>
 @{
     ViewData["Title"] = "Reservations";
+    var loggedInUser = ViewBag.LoggedInUser as User;
+
 }
 
 <!DOCTYPE html>
@@ -24,16 +26,39 @@
         padding-left: 0;
         padding-right: 0;
     }
+  
+
 </style>
 
 
 </head>
 <body>
-    <div class="container mt-5 mb-6">
-        <div class="text-center">
-            <h1 id="ViewsTitles" class="reservation-count">Your total reservations in our hotel is: <span>@Model.Count()</span> <i class="fa-solid fa-bed" style="color: #000000;"></i> </h1>
+    <div class="text-center">
+        @if (loggedInUser != null)
+        {
+            <h2 id="ViewsTitles" class="boxy" style="color: #ff4157;">Welcome, <strong>@loggedInUser.FirstName</strong>  <i class="fa-solid fa-user-secret" style="color: #ff4157;"></i> !</h2>
+
+        }
+        else
+        {
+            <p>Error: Unable to retrieve user information.</p>
+        }
+    </div>
+    <hr>
+   <div class="row">
+        <div class="col-md-6">
+            <div class="text-center mt-2">
+                <h1 id="ViewsTitles" class="boxy">Your total reservations in our hotel is: <span>@Model.Count()</span> <i class="fa-solid fa-bed" style="color: #000000;"></i> </h1>
+            </div>
         </div>
-        <br>
+        <div class="col-md-6">
+            <div class="text-center mt-2">
+                <h4 id="ViewsTitles" class="boxy">Dream Paradise Total Reservations Record : <span>@ViewBag.TotalReservationsCount</span> <i class="fa-solid fa-id-badge" style="color: #000000;"></i></h4>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container mt-5 mb-6">
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -75,9 +100,7 @@
             </tbody>
         </table>
 
-        <div class="text-center mt-6 mb-6">
-            <h4 id="ViewsTitles" class="total-reservations-record">Dream Paradise Total Reservations Record : <span>@ViewBag.TotalReservationsCount</span> <i class="fa-solid fa-id-badge" style="color: #000000;"></i></h4>
-        </div>
+        
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

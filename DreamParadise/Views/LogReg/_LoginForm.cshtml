@@ -1,8 +1,13 @@
 @model LoginUser
 
+<style>
+  
+</style>
+
+
 <body>
     <div class="container mt-2">
-         <fieldset class="border border-dark p-4">
+         <fieldset class="border  rounded-3 p-5 custom-fieldset">
         <legend>Login</legend>
             <form asp-action="Login" asp-controller="LogReg" method="post">
             <span class="text-danger">@ViewData["ErrorMessage"]</span>

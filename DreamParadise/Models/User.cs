@@ -10,28 +10,28 @@ public class User
     public int UserId { get; set; }
     
     //* ======= First Name validation ============
-    [Required]   
-    [MinLength(2,ErrorMessage ="First name must be at least 2 characters")]     
+    [Required (ErrorMessage =" The First Name adress is required❗️")]   
+    [MinLength(2,ErrorMessage ="First name must be at least 2 characters ❗️")]     
     public string FirstName { get; set; }
     
 
     //* ======= Last Name validation ============
-    [Required] 
-    [MinLength(2,ErrorMessage ="Last name must be at least 2 characters")]      
+    [Required (ErrorMessage =" The Last Name adress is required❗️")] 
+    [MinLength(2,ErrorMessage ="Last name must be at least 2 characters ❗️")]      
     public string LastName { get; set; }         
     
 
     //* ======= Email validation ============
-    [Required (ErrorMessage ="The email adress is required❗️")]
+    [Required (ErrorMessage ="The Email adress is required❗️")]
     [EmailAddress]
     [UniqueEmail]
     public string Email { get; set; }      
     
 
     //* ======= Password validation ============
-    [Required (ErrorMessage ="The Password is required ❌ ❌ ❌")]
+    [Required (ErrorMessage ="The Password is required ❗️")]
     [DataType(DataType.Password)]
-    [MinLength(8, ErrorMessage = "Password must be at least 8 characters")]
+    [MinLength(8, ErrorMessage = "Password must be at least 8 characters ❗️")]
     public string Password { get; set; }          
     
 
@@ -53,6 +53,7 @@ public class User
     [NotMapped]
     [DataType(DataType.Password)]
     [Compare("Password")]
+    [Display(Name = "Confirm Password")]
     public string PasswordConfirm { get; set; }
 
 
@@ -75,7 +76,7 @@ public class UniqueEmailAttribute : ValidationAttribute
         if(value == null)
         {
     	    // If it was, return the required error
-            return new ValidationResult("Email is required!");
+            return new ValidationResult("Email is required ❗️");
         }
     
     	// This will connect us to our database since we are not in our Controller
@@ -84,7 +85,7 @@ public class UniqueEmailAttribute : ValidationAttribute
     	if (_context != null && _context.Users.Any(e => e.Email == value.ToString()))
         {
             // If yes, throw an error
-            return new ValidationResult("Email must be unique!");
+            return new ValidationResult("Email must be unique ❗️");
         }
         else
         {

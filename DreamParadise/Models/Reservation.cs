@@ -1,6 +1,7 @@
 #pragma warning disable CS8618
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DreamParadise.Models
 {
@@ -10,18 +11,19 @@ namespace DreamParadise.Models
         public int ReservationId { get; set; }
 
         // =========== CheckIn Date validation ===============
-        [Required(ErrorMessage = "Please enter the CheckIn date")]
+        [Required(ErrorMessage = "Please enter the CheckIn date ❗️ ")]
         [FutureDate]
         public DateTime CheckIn { get; set; }
         
         // =========== CheckOut Date validation ===============
-        [Required(ErrorMessage = "Please enter the CheckOut date")]
+        [Required(ErrorMessage = "Please enter the CheckOut date ❗️ ")]
         [FutureDate]
+        [DateRange(nameof(CheckIn), ErrorMessage = "CheckOut date must be after CheckIn date❗️ ")]
         public DateTime CheckOut { get; set; }
 
         // =========== Adults count validation ===============
         [Required]
-        [Range(1, 5, ErrorMessage = "Please enter a number between 1 and 5")]
+        [Range(1, 5)]
         public int AdultsCount { get; set; }
 
         // =========== Child count validation ===============
@@ -32,7 +34,7 @@ namespace DreamParadise.Models
         [Required]
         public string RoomType { get; set; }
 
-        [Required]
+        [NotMapped]
         public int RoomPrice { get; set; }
 
         // =========== Total Price validation ===============
@@ -45,8 +47,8 @@ namespace DreamParadise.Models
 
         // =========== Navigation ===============
         public User? UserWhoReserved { get; set; }
-    }
 
+    } 
     // =========== Future date attribute creation ===============
     public class FutureDateAttribute : ValidationAttribute
     {
@@ -59,7 +61,7 @@ namespace DreamParadise.Models
             DateTime submittedDate = (DateTime)value;
             if (submittedDate < DateTime.Now)
             {
-                return new ValidationResult("Please enter a date in the future!");
+                return new ValidationResult("Please enter a date in the future❗️");
             }
             return ValidationResult.Success;
         }

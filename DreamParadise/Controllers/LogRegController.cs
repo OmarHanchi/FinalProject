@@ -66,7 +66,7 @@ namespace DreamParadise.Controllers;
 
                 if (userInDb == null)
                 {
-                    ModelState.AddModelError("LoginEmail", "Invalid Email / Password");
+                    ModelState.AddModelError("LoginEmail", "Invalid Email or Password ❗️ ");
                     return View("LogReg");
                 }
 
@@ -80,7 +80,7 @@ namespace DreamParadise.Controllers;
                 }
                 else
                 {
-                    ModelState.AddModelError("LoginPassword", "Invalid Email / Password");
+                    ModelState.AddModelError("LoginPassword", "Invalid Email or Password ❗️ ");
                     return View("LogReg");
                 }
             }

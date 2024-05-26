@@ -1003,3 +1003,12 @@ a {
 
 
 
+
+
+
+
+
+fieldset.custom-fieldset {
+    border-width: 2px;
+    border-color: #ff4157 !important;
+}

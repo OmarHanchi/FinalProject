@@ -14,6 +14,11 @@
     <link href="~/fonts/antonio-exotic/stylesheet.css" rel="stylesheet">
     <link href="~/css/lightbox.min.css" rel="stylesheet">
     <link href="~/css/responsive.css" rel="stylesheet">
+
+    <!-- Awesome fonts  -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap JS -->
@@ -47,7 +52,6 @@
                         <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                             <ul class="list-unstyled nav1 cl-effect-10">
                                 <!-- Navigation items -->
-                                <li><a data-hover="Home" asp-action="Index" asp-controller="Home"><span>Home</span></a></li>
                                 <li><a data-hover="Rooms" asp-action="Rooms" asp-controller="Home"><span>Rooms</span></a></li>
                                 <li><a data-hover="Reservations" asp-action="Reservations" asp-controller="Home"><span>Reservations</span></a></li>
                                <li><a data-hover="Rate Us" asp-action="RateHotel" asp-controller="Home"><span>Rate Us</span></a></li>
@@ -61,10 +65,10 @@
                 <!-- Buttons aligned to the right -->
                 <div class="text-right">
                     <!-- Book Now button -->
-                    <a asp-action="Booking" asp-controller="Home" class="btn btn-primary">Book Now</a>
+                    <a asp-action="Booking" asp-controller="Home" class="btn btn-primary mr-2"><i class="fa-solid fa-cart-flatbed-suitcase" style="color: #ffffff;"></i> Book Now</a>
                     <!-- Log Out button -->
-                     <form asp-action="Logout" asp-controller="LogReg" method="post">
-                        <button type="submit" class="btn btn-secondary">Logout</button>
+                    <form asp-action="Logout" asp-controller="LogReg" method="post" class="d-inline-block">
+                        <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Logout</button>
                     </form> 
                 </div>
             </div>       

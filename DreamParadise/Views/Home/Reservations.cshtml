@@ -11,12 +11,27 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/site.css">
+    <style>
+    body, html {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 84%;
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+</style>
+
 
 </head>
 <body>
     <div class="container mt-5 mb-6">
         <div class="text-center">
-            <h1 id="ViewsTitles" class="reservation-count">Your total reservations in our hotel is: <span>@Model.Count()</span></h1>
+            <h1 id="ViewsTitles" class="reservation-count">Your total reservations in our hotel is: <span>@Model.Count()</span> <i class="fa-solid fa-bed" style="color: #000000;"></i> </h1>
         </div>
         <br>
         <table class="table table-bordered table-striped">
@@ -48,11 +63,11 @@
                         <td>
                             <form asp-action="EditReservation" asp-controller="Home" method="get" class="d-inline">
                                 <input type="hidden" name="id" value="@reservation.ReservationId" />
-                                <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                <button type="submit" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i> Edit</button>
                             </form>
                             <form asp-action="DeleteReservation" asp-controller="Home" method="post" class="d-inline">
                                 <input type="hidden" name="id" value="@reservation.ReservationId" />
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can" style="color: #000000;"></i> Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -61,7 +76,7 @@
         </table>
 
         <div class="text-center mt-6 mb-6">
-            <h4 id="ViewsTitles" class="total-reservations-record">Dream Paradise Total Reservations Record : <span>@ViewBag.TotalReservationsCount</span></h4>
+            <h4 id="ViewsTitles" class="total-reservations-record">Dream Paradise Total Reservations Record : <span>@ViewBag.TotalReservationsCount</span> <i class="fa-solid fa-id-badge" style="color: #000000;"></i> </h4>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

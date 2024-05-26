@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U+nDDakM8QGIqSAM10VTf3ldkV0F0PU66IQ2Y/A2aPmWExY1p26+7BwqZVZwwBTJc3HJMRSo38QSPBuUItlXXg==",
+  "dgSpecHash": "8f7A6dW4tV4Y9eTeGPZNW0bPxvNTJin7ZlnB03nkkAVLHw8x2j8Hz4D9/ITO99XT80Zn83irb30ANBkqDmVPSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Omar\\Desktop\\DreamParadise\\DreamParadise.csproj",
+  "projectFilePath": "C:\\Users\\Omar\\Desktop\\New folder\\DreamParadise\\DreamParadise.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Omar\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Omar\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
